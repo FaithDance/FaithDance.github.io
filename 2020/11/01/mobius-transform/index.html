@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"www.dofblog.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="我们比较了解的是有关多项式的乘法运算，对于下标为整数，下标运算为相加等于某个数的时候，我们有很优秀的FFT做法。 但是遇到一些奇怪的卷积形式时，比如我们定义 $ h &#x3D; f \times g $， $ h_{S} &#x3D; \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R &#x3D; S] f_{L} * g_{R}">
+  <meta name="description" content="我们比较了解的是有关多项式的乘法运算，对于下标为整数，下标运算为相加等于某个数的时候，我们有很优秀的FFT做法。 但是遇到一些奇怪的卷积形式时，比如我们定义 $ h &#x3D; f \times g $， $ h_{S} &#x3D; \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R &#x3D; S] f_{L} g_{R} $。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mobius transform">
 <meta property="og:url" content="http://www.dofblog.com/2020/11/01/mobius-transform/index.html">
 <meta property="og:site_name" content="dof&#39;s blog">
-<meta property="og:description" content="我们比较了解的是有关多项式的乘法运算，对于下标为整数，下标运算为相加等于某个数的时候，我们有很优秀的FFT做法。 但是遇到一些奇怪的卷积形式时，比如我们定义 $ h &#x3D; f \times g $， $ h_{S} &#x3D; \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R &#x3D; S] f_{L} * g_{R}">
+<meta property="og:description" content="我们比较了解的是有关多项式的乘法运算，对于下标为整数，下标运算为相加等于某个数的时候，我们有很优秀的FFT做法。 但是遇到一些奇怪的卷积形式时，比如我们定义 $ h &#x3D; f \times g $， $ h_{S} &#x3D; \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R &#x3D; S] f_{L} g_{R} $。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-01T05:34:22.000Z">
-<meta property="article:modified_time" content="2020-11-01T08:55:59.031Z">
+<meta property="article:modified_time" content="2020-11-01T09:07:38.456Z">
 <meta property="article:author" content="dof">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -176,7 +176,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-11-01 13:34:22 / Modified: 16:55:59" itemprop="dateCreated datePublished" datetime="2020-11-01T13:34:22+08:00">2020-11-01</time>
+              <time title="Created: 2020-11-01 13:34:22 / Modified: 17:07:38" itemprop="dateCreated datePublished" datetime="2020-11-01T13:34:22+08:00">2020-11-01</time>
             </span>
 
           
@@ -191,7 +191,7 @@
 
       
         <p>我们比较了解的是有关多项式的乘法运算，对于下标为整数，下标运算为相加等于某个数的时候，我们有很优秀的FFT做法。</p>
-<p>但是遇到一些奇怪的卷积形式时，比如我们定义 $ h = f \times g $， $ h_{S} = \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R = S] f_{L} * g_{R} $。</p>
+<p>但是遇到一些奇怪的卷积形式时，比如我们定义 $ h = f \times g $， $ h_{S} = \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R = S] f_{L} g_{R} $。</p>
 <p>此时下标是一个集合，运算为集合并的卷积，我们已知了 $ f $ 和 $ g $ ，需要快速算出 $ h $。</p>
 <p>最暴力的做法是 $ O(2^{n}) $ 分别枚举 $ L $ 和 $ R $，把答案加到 $ h $ 中去，这样复杂度是 $ O(4^{n}) $，不太行。</p>
 <p>这时我们就要一种高效的算法。求卷积可以用分治乘法，好像比较高妙，但我们要讲的是另一种：<strong>快速莫比乌斯变换和反演</strong>。</p>
@@ -201,20 +201,20 @@
 <blockquote>
 <p>我们定义 \(f\) 的莫比乌斯变换为 \(\hat{f}\) ，其中 \(\hat{f_{S}} = \sum\limits_{T \subseteq S}^{} f_{T}\)。</p>
 <p>相反的，我们定义 \(\hat{f}\) 的莫比乌斯反演为 \(f\)，其中 \(f_{S} = \sum\limits_{T \subseteq S}^{} (-1)^{|S| - |T|} \hat{f_{T}}\)，用容斥原理易得。</p>
-<p>然后我们对卷积式两边同时做莫比乌斯变换：\(\hat{h_{S}} = \sum\limits_{L \subseteq S} \sum\limits_{R \subseteq S} [L \cup R \subseteq S] f_{L} * g_{R}\)。</p>
-<p>由于 \([L \cup R \subseteq S] \Leftrightarrow [L \subseteq S][R \subseteq S]\)，所以 \(\hat{h_{S}} = \sum\limits_{L \subseteq S} \sum\limits_{R \subseteq S} f_{L} * g_{R}\)。</p>
-<p>即 $ \hat{h_{S}} = ( \sum\limits_{L \subseteq S} f_{L} ) <em> ( \sum\limits_{R \subseteq S} g_{R} ) = \hat{f_{S}} </em> \hat{g_{S}} $。</p>
+<p>然后我们对卷积式两边同时做莫比乌斯变换：\(\hat{h_{S}} = \sum\limits_{L \subseteq S} \sum\limits_{R \subseteq S} [L \cup R \subseteq S] f_{L} g_{R}\)。</p>
+<p>由于 \([L \cup R \subseteq S] \Leftrightarrow [L \subseteq S][R \subseteq S]\)，所以 \(\hat{h_{S}} = \sum\limits_{L \subseteq S} \sum\limits_{R \subseteq S} f_{L}  g_{R}\)。</p>
+<p>即 $ \hat{h_{S}} = ( \sum\limits_{L \subseteq S} f_{L} )  ( \sum\limits_{R \subseteq S} g_{R} ) = \hat{f_{S}}  \hat{g_{S}} $。</p>
 </blockquote>
 <p>于是问题就在于如何快速求出 \(f\) 和 \(g\) 莫比乌斯变换（反演）。</p>
-<p>如果要暴力的话，可以直接枚举子集算出莫比乌斯变换（反演），这样是 \(O(3^{n})\)，虽然比较优秀了，但复杂度还能更低。</p>
+<p>如果要暴力的话，可以直接枚举子集算出莫比乌斯变换（反演），这样是$O(3^{n})$，虽然比较优秀了，但复杂度还能更低。</p>
 <p><strong>我们考虑用递推解决：</strong></p>
 <blockquote>
 <p>设 \(\hat{f_{S}}^{(i)}\) 表示 \(\sum\limits_{T \subseteq S} [(S - T) \subseteq \{1, 2, …, i\}] f_{T}\)</p>
 <p>易得初始状态：\(\hat{f_{S}}^{(0)} = f_{S}\)</p>
-<p>对于每一个不包含 $\{i\}$ 的集合$ S $，可知 \( \hat{f_{S}}^{(i)} = \hat{f_{S}}^{(i - 1)} \)（因为 \(S\) 并没有 \( i \) 这位），$ \hat{f}_{S \cup \{i\} }^{(i)} = \hat{f}_{S}^{(i - 1)} + \hat{f}_{S \cup \{i\}}^{(i - 1)} $（前者的 \(T\) 没有包含 \(\{i\}\)，而后者的 \(T\) 必须包含了 \(\{i\}\)）。</p>
+<p>对于每一个不包含$\{i\}$的集合$ S $，可知$ \hat{f_{S}}^{(i)} = \hat{f_{S}}^{(i - 1)} $（因为$S$并没有$i$这位），$ \hat{f}_{S \cup \{i\} }^{(i)} = \hat{f}_{S}^{(i - 1)} + \hat{f}_{S \cup \{i\}}^{(i - 1)} $（前者的 \(T\) 没有包含 \(\{i\}\)，而后者的 \(T\) 必须包含了 \(\{i\}\)）。</p>
 <p>显然，递推了 $ n $ 轮之后，$ \hat{f}_{S}^{n} $ 就是所求的变换了。</p>
 </blockquote>
-<p>这样我们就能在 \(O(n * 2^{n})\) 快速求出 \(f\) 的莫比乌斯变换了。（逆莫比乌斯变换同理）</p>
+<p>这样我们就能在 \(O(n 2^{n})\) 快速求出 \(f\) 的莫比乌斯变换了。（逆莫比乌斯变换同理）</p>
 <p>于是我们就解决了集合并卷积的问题。</p>
 <p>UPD：</p>
 <p>我们都知道第一层循环枚举集合，第二层循环枚举它为\(1\)的位，把去掉这个\(1\)的子集的答案加上去的做法是错的。我们考虑两个集合\(s, t\)，其中\(t \in s\)。\(t\)可能有多种路径到达\(s\)，也就是存在多个\(k, k \in s, t \in k\)，这样\(t\)就会被算多次。</p>
@@ -224,10 +224,10 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Fmt</span><span class="params">(<span class="keyword">int</span> *a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">0</span>; s &lt; U; ++s)</span><br><span class="line">      <span class="keyword">if</span> (s &gt;&gt; i &amp; <span class="number">1</span>) a[s] = Add(a[s], a[s ^ (<span class="number">1</span> &lt;&lt; i)]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Ifmt</span><span class="params">(<span class="keyword">int</span> *a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">0</span>; s &lt; U; ++s)</span><br><span class="line">      <span class="keyword">if</span> (s &gt;&gt; i &amp; <span class="number">1</span>) a[s] = Sub(a[s], a[s ^ (<span class="number">1</span> &lt;&lt; i)]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>（此处 \(n\) 为集合大小， \(U = 2^n\) ）</p>
 <p><strong>接下来我们来继续讲一讲子集卷积：</strong></p>
-<p>问题是已知 \(f\) 和 \(g\)，我们想求出 $ h = f \times g $，其中 $ h_{S} = \sum\limits_{T \subseteq S} f_{T} * g_{S - T} $。</p>
+<p>问题是已知 \(f\) 和 \(g\)，我们想求出 $ h = f \times g $，其中 $ h_{S} = \sum\limits_{T \subseteq S} f_{T}  g_{S - T} $。</p>
 <p>回顾刚刚的集合并卷积，子集卷积的条件比集合并卷积更苛刻，即 \(L\) 和 \(R\) 的集合应该不相交。</p>
 <p>考虑集合并卷积合法当且仅当 \(L \cap R = \varnothing \)，我们可以在卷积时多加一维，维护集合的大小，如 \(f_{i,S}\) 表示集合中有 \(i\) 个元素，集合表示为 \(S\) 。可以发现当 \(i\) 和 \(S\) 的真实元素个数符合时才是对的。</p>
-<p>初始时，我们只把 \(f_{bc[S],S}\) 的值赋成原来的 \(f_{S}\)（\(g\) 同理），然后对每一个\(f_i\)做一遍$FMT$，点值相乘时这么写：\(h_{i, S} = \sum\limits_{j = 0}^{i} f_{j,S} * g_{i - j, S}\)。最后扫一遍把不符合实际情况的状态赋成 \(0\) 即可。（ \(bc[]\) 表示集合元素个数，即 \(bitcount\) ）</p>
+<p>初始时，我们只把 \(f_{bc[S],S}\) 的值赋成原来的 \(f_{S}\)（\(g\) 同理），然后对每一个\(f_i\)做一遍$FMT$，点值相乘时这么写：\(h_{i, S} = \sum\limits_{j = 0}^{i} f_{j,S}  g_{i - j, S}\)。最后扫一遍把不符合实际情况的状态赋成 \(0\) 即可。（ \(bc[]\) 表示集合元素个数，即 \(bitcount\) ）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">0</span> to n</span><br><span class="line">  Fmt(f[i])</span><br><span class="line">  Fmt(g[i])</span><br><span class="line">  <span class="keyword">for</span> s = <span class="number">0</span> to U - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> j = <span class="number">0</span> to i</span><br><span class="line">      h[i][s] += f[j][s] * g[i - j][s]</span><br><span class="line">  Ifmt(h[i])</span><br><span class="line"><span class="keyword">for</span> s = <span class="number">0</span> to U - <span class="number">1</span></span><br><span class="line">  h[bc[s]][s] is the real answer</span><br></pre></td></tr></table></figure>
 
     </div>
