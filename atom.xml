@@ -6,7 +6,7 @@
   <link href="http://www.dofblog.com/atom.xml" rel="self"/>
   
   <link href="http://www.dofblog.com/"/>
-  <updated>2020-11-01T06:10:05.110Z</updated>
+  <updated>2020-11-01T08:13:46.240Z</updated>
   <id>http://www.dofblog.com/</id>
   
   <author>
@@ -21,10 +21,11 @@
     <link href="http://www.dofblog.com/2020/11/01/mobius-transform/"/>
     <id>http://www.dofblog.com/2020/11/01/mobius-transform/</id>
     <published>2020-11-01T05:34:22.000Z</published>
-    <updated>2020-11-01T06:10:05.110Z</updated>
+    <updated>2020-11-01T08:13:46.240Z</updated>
     
     
-    <summary type="html">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;
+    <summary type="html">&lt;script src=&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;&gt;&lt;/script&gt;
+&lt;script id=&quot;MathJax-script&quot; async src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;我们比较了解的是有关多项式的乘法运算，对于下标为整数，下标运算为相加等于某个数的时候，我们有很优秀的FFT做法。&lt;/p&gt;
 &lt;p&gt;但是遇到一些奇怪的卷积形式时，比如我们定义 \( h = f * g \)， \(h_{S} = \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R = S] f_{L} * g_{R} \)。&lt;/p&gt;
