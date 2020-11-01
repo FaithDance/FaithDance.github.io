@@ -6,7 +6,7 @@
   <link href="http://www.dofblog.com/atom.xml" rel="self"/>
   
   <link href="http://www.dofblog.com/"/>
-  <updated>2020-11-01T05:09:14.711Z</updated>
+  <updated>2020-11-01T06:10:05.110Z</updated>
   <id>http://www.dofblog.com/</id>
   
   <author>
@@ -17,16 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>circle inversion</title>
-    <link href="http://www.dofblog.com/2020/11/01/circle-inversion/"/>
-    <id>http://www.dofblog.com/2020/11/01/circle-inversion/</id>
-    <published>2020-11-01T04:53:24.000Z</published>
-    <updated>2020-11-01T05:09:14.711Z</updated>
+    <title>mobius transform</title>
+    <link href="http://www.dofblog.com/2020/11/01/mobius-transform/"/>
+    <id>http://www.dofblog.com/2020/11/01/mobius-transform/</id>
+    <published>2020-11-01T05:34:22.000Z</published>
+    <updated>2020-11-01T06:10:05.110Z</updated>
     
     
-    <summary type="html">&lt;p&gt;一时兴起，就有了这篇博客。本人也学识浅薄，姑且讲一下我对于圆反演的一些皮毛之见。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;首先我们要明白反演是什么：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;反演是一种基本的几何变换。给定一个平面上的一个反演中心$$ O $$和一个常数$$ k $$，对于任意一个点$$A(A \neq O)$$，我们可以找到一个在直线$$OA$$上的点$$A’$$，使得线段$$OA,OA’$$的有向长度的乘积为$$k$$，那$$A’$$就是$$A$$关于$$O$$的反演点，可以证明这样的$$A’$$是唯一的。我们称$$A-&amp;gt;A’$$的这种变换为反演，我们也可以把它看成一种映射，而且是双射。&lt;/p&gt;</summary>
+    <summary type="html">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;我们比较了解的是有关多项式的乘法运算，对于下标为整数，下标运算为相加等于某个数的时候，我们有很优秀的FFT做法。&lt;/p&gt;
+&lt;p&gt;但是遇到一些奇怪的卷积形式时，比如我们定义 \( h = f * g \)， \(h_{S} = \sum\limits_{L \subseteq S}^{} \sum\limits_{R \subseteq S}^{} [L \cup R = S] f_{L} * g_{R} \)。&lt;/p&gt;
+&lt;p&gt;此时下标是一个集合，运算为集合并的卷积，我们已知了 \(f\) 和 \(g\) ，需要快速算出 \(h\)。&lt;/p&gt;
+&lt;p&gt;最暴力的做法是 \(O(2^{n})\) 分别枚举 \(L\) 和 \(R\)，把答案加到 \(h\) 中去，这样复杂度是 \(O(4^{n})\)，不太行。&lt;/p&gt;
+&lt;p&gt;这时我们就要一种高效的算法。求卷积可以用分治乘法，好像比较高妙，但我们要讲的是另一种：&lt;strong&gt;快速莫比乌斯变换和反演&lt;/strong&gt;。&lt;/p&gt;</summary>
     
     
     
@@ -49,27 +53,6 @@
     
     
     <category term="MarkDown" scheme="http://www.dofblog.com/tags/MarkDown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hell</title>
-    <link href="http://www.dofblog.com/2020/11/01/hell/"/>
-    <id>http://www.dofblog.com/2020/11/01/hell/</id>
-    <published>2020-10-31T16:13:38.000Z</published>
-    <updated>2020-11-01T04:49:55.618Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;a new</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
