@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"www.dofblog.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="a new version.">
+  <meta name="description" content="一时兴起，就有了这篇博客。本人也学识浅薄，姑且讲一下我对于圆反演的一些皮毛之见。 首先我们要明白反演是什么： 反演是一种基本的几何变换。给定一个平面上的一个反演中心$$ O $$和一个常数$$ k $$，对于任意一个点$$A(A \neq O)$$，我们可以找到一个在直线$$OA$$上的点$$A’$$，使得线段$$OA,OA’$$的有向长度的乘积为$$k$$，那$$A’$$就是$$A$$关于$$O">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hell">
-<meta property="og:url" content="http://www.dofblog.com/2020/11/01/hell/index.html">
+<meta property="og:title" content="circle inversion">
+<meta property="og:url" content="http://www.dofblog.com/2020/11/01/circle-inversion/index.html">
 <meta property="og:site_name" content="dof&#39;s blog">
-<meta property="og:description" content="a new version.">
+<meta property="og:description" content="一时兴起，就有了这篇博客。本人也学识浅薄，姑且讲一下我对于圆反演的一些皮毛之见。 首先我们要明白反演是什么： 反演是一种基本的几何变换。给定一个平面上的一个反演中心$$ O $$和一个常数$$ k $$，对于任意一个点$$A(A \neq O)$$，我们可以找到一个在直线$$OA$$上的点$$A’$$，使得线段$$OA,OA’$$的有向长度的乘积为$$k$$，那$$A’$$就是$$A$$关于$$O">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-31T16:13:38.000Z">
-<meta property="article:modified_time" content="2020-11-01T04:49:55.618Z">
+<meta property="article:published_time" content="2020-11-01T04:53:24.000Z">
+<meta property="article:modified_time" content="2020-11-01T05:09:14.711Z">
 <meta property="article:author" content="dof">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.dofblog.com/2020/11/01/hell/">
+<link rel="canonical" href="http://www.dofblog.com/2020/11/01/circle-inversion/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>hell | dof's blog</title>
+  <title>circle inversion | dof's blog</title>
   
 
 
@@ -151,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://www.dofblog.com/2020/11/01/hell/">
+    <link itemprop="mainEntityOfPage" href="http://www.dofblog.com/2020/11/01/circle-inversion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -164,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hell
+          circle inversion
         </h1>
 
         <div class="post-meta">
@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-11-01 00:13:38 / Modified: 12:49:55" itemprop="dateCreated datePublished" datetime="2020-11-01T00:13:38+08:00">2020-11-01</time>
+              <time title="Created: 2020-11-01 12:53:24 / Modified: 13:09:14" itemprop="dateCreated datePublished" datetime="2020-11-01T12:53:24+08:00">2020-11-01</time>
             </span>
 
           
@@ -189,7 +189,48 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>a new version.</p>
+        <p>一时兴起，就有了这篇博客。本人也学识浅薄，姑且讲一下我对于圆反演的一些皮毛之见。</p>
+<p><strong>首先我们要明白反演是什么：</strong></p>
+<p>反演是一种基本的几何变换。给定一个平面上的一个反演中心$$ O $$和一个常数$$ k $$，对于任意一个点$$A(A \neq O)$$，我们可以找到一个在直线$$OA$$上的点$$A’$$，使得线段$$OA,OA’$$的有向长度的乘积为$$k$$，那$$A’$$就是$$A$$关于$$O$$的反演点，可以证明这样的$$A’$$是唯一的。我们称$$A-&gt;A’$$的这种变换为反演，我们也可以把它看成一种映射，而且是双射。</p>
+<a id="more"></a>
+
+<p><strong>点有关于圆的反演：</strong></p>
+<p>给定一个平面上的一个圆，其圆心为$$O$$，半径为$$r_0$$，对于任意一个点$$A(A \neq O)$$，我们同样可以找到一个在直线$$OA$$上的点$$A’$$，使得线段$$OA, OA’$$的有向长度之积为常数$${r_0}^2$$，那$$A’$$就是$$A$$关于圆$$O$$的反演点，同样这样的$$A’$$是唯一的。</p>
+<p>接下来我们讨论的问题都将围绕一个反演中心展开，所以我们用反演变换$$f$$来表示关于圆$$O$$的反演，这里我们有$$f(A) = A’$$。</p>
+<p><strong>直线关于圆的反演：</strong></p>
+<p>直线$$A$$关于圆$$O$$的反演$$A’$$就是$${ f(P) | P \in A }$$，通俗地讲就是把直线上的点都做反演后点的集合，很明显这也是一个双射。</p>
+<p>我们首先说一下结论：</p>
+<pre><code>当直线$$A$$过点$$O$$时，$$A&#39; = A$$。
+当直线$$A$$不过点$$O$$时，$$A&#39;$$是一个圆，且$$A&#39;$$始终过点$$O$$。当$$A$$与圆$$O$$相交时，$$A&#39;$$与圆$$O$$相交；当$$A$$与圆$$O$$相切时，$$A&#39;$$内切与圆$$O$$；当$$A$$与圆$$O$$相离时，$$A&#39;$$内含与圆$$O$$。</code></pre>
+<p>第一句话比较简单，不做累述，接下来主要证明第二句话，并会给出$$A’$$的具体的位置。（不会画图，大家自己脑补）</p>
+<p>方便起见，我们假设圆$$O$$是一个单位圆（这个并没有关系，图是可以缩放的），直线$$A$$为$$x = a(a \neq 0)$$。</p>
+<p>设$$A$$上任意一个的点$$P(a, y_1)$$，$$dis(P, O) = \sqrt{ a^2 + {y_1}^2 }$$，由相似得$$P’ = f(P) = ( \frac{a}{a^2 + {y_1}^2} , \frac{y_1}{a^2 + {y_1}^2} )$$。</p>
+<p>这里点$$P’$$的轨迹中只有$$y_1$$一个变量。我们要证明$$P’$$的轨迹是一个圆，即我们想要得到$$P’(x,y)$$中$$x,y$$的关系式。</p>
+<p>根据$$P’$$的坐标有：$$(1) x = \frac{a}{a^2 + {y_1}^2}  \qquad (2) y_1 x = a y $$</p>
+<p>联立$$(1)(2)$$消掉$$y_1$$后即可得：$$ x^2 - \frac{1}{a}x + y^2 = 0 $$</p>
+<p>可以写成圆的标准方程：$$ (x - \frac{1}{2a})^2 + y^2 = (\frac{1}{2a})^2 $$</p>
+<p> 所以可以知道$$A’$$的圆心位于$$(\frac{1}{2a}, 0)$$，半径为$$\frac{1}{2a}$$，所以说$$A’$$始终过点$$O$$。很容易看出，当$$a = 1$$时，直线$$A$$与圆$$O$$相切，此时圆$$A’$$也内切与圆$$O$$；其他两种情况也可以得到证明。</p>
+<p><strong>圆有关于圆的反演：</strong></p>
+<p>圆$$A$$关于圆$$O$$的反演也定义为$${ f(P) | P \in A }$$。</p>
+<p>我们先阐明结论：</p>
+<pre><code>当圆$$A$$过点$$O$$时，$$A&#39;$$会退化成一条直线，可以看做上一部分直线关于圆的反演的逆变换。
+当圆$$A$$不过点$$O$$时，$$A&#39;$$是一个圆。当$$A$$与圆$$O$$相交时，$$A&#39;$$也与圆$$O$$相交；当$$A$$与圆$$O$$外（内）切时，$$A&#39;$$与圆$$O$$内（外）切；当$$A$$与圆$$O$$相离（内含）时，$$A&#39;$$与圆$$O$$内含（相离）。</code></pre>
+<p>第一句话我们已经讨论过了就不做累述。我们仿照上一部分，对此第二句话进行简要证明。</p>
+<p>同样假设圆$$O$$是一个单位圆，圆$$A$$的圆心在$$(a, 0)$$，半径是$$r(r \neq a)$$。</p>
+<p>设$$A$$上的任意一点$$P(x_1, y_1)$$，故有方程：$$(1) (x_1 - a)^2 + {y_1}^2 = r^2 $$</p>
+<p>同样可以得到$$P’ = f(P) = (\frac{x_1}{ {x_1}^2 + {y_1}^2 }, \frac{y_1}{ {x_1}^2 + {y_1}^2 } )$$</p>
+<p>根据$$P’$$坐标得到方程：$$ (2) x = \frac{x_1}{ {x_1}^2 + {y_1}^2 } \qquad (3) y_1 x = x_1 x $$</p>
+<p>联立方程$$(1)(2)(3)$$消去$$x_1,y_1$$可以得到一个圆的标准方程：$$(x + \frac{a}{r^2 - a^2})^2 + y^2 = (\frac{r}{r^2 - a^2})^2$$</p>
+<p>显然$$A’$$是一个圆，圆心和半径都能知道了。读者们可以自行验证是否满足结论中第二句话所述的三种情况。</p>
+<p><strong>圆反演的性质与应用：</strong></p>
+<p>有几个需要知道的事实：</p>
+<pre><code>两对不共线的互反点四点共圆。（证明可以先得到相似，再得到对角互补）
+两个外切的圆在分别反演后仍外切（如果切点恰好是反演中心，则反演后为两平行线），对于内切、相交、相离、内含的情况也是一样。这个同样适用于圆和直线的关系上。（因为原有的交点在反演后仍是交点，由于反演是可逆的，不会产生额外的交点）</code></pre>
+<p>关于圆的反演变换是几何中一个常用技巧，其通常可以把圆上的问题转化成直线上的问题，在多圆问题中尤显其强大之处。</p>
+<p>$$\star$$ 一道例题。给定两个圆$$A,B$$和一个不在$$A,B$$上的点$$P$$，求出所有过点$$P$$的圆，满足与$$A,B$$分别相切。</p>
+<p>直接做好像没什么办法，我们考虑利用反演变换。以$$P$$为圆心任意半径做一个圆，然后分别做出$$A,B$$关于圆$$P$$的反演$$A’,B’$$，可以得到$$A’,B’$$的公切线，把公切线反演回去就是所求的圆。做法很简单，原因也很简单，由于要求的是过点$$P$$的圆，相当于是要求反演后的一条直线，并且这条直线要与反演后的$$A,B$$相切。</p>
+<p>参考资料：</p>
+<pre><code>知乎zdr0的专栏 https://zhuanlan.zhihu.com/p/55834403</code></pre>
 
     </div>
 
@@ -205,13 +246,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/01/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
+    <a href="/2020/11/01/markdown-use-guide/" rel="prev" title="markdown use guide">
+      <i class="fa fa-chevron-left"></i> markdown use guide
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/01/markdown-use-guide/" rel="next" title="markdown use guide">
-      markdown use guide <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     

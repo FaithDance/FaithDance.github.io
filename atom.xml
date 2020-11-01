@@ -6,7 +6,7 @@
   <link href="http://www.dofblog.com/atom.xml" rel="self"/>
   
   <link href="http://www.dofblog.com/"/>
-  <updated>2020-11-01T04:35:30.181Z</updated>
+  <updated>2020-11-01T05:09:14.711Z</updated>
   <id>http://www.dofblog.com/</id>
   
   <author>
@@ -17,14 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>circle inversion</title>
+    <link href="http://www.dofblog.com/2020/11/01/circle-inversion/"/>
+    <id>http://www.dofblog.com/2020/11/01/circle-inversion/</id>
+    <published>2020-11-01T04:53:24.000Z</published>
+    <updated>2020-11-01T05:09:14.711Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一时兴起，就有了这篇博客。本人也学识浅薄，姑且讲一下我对于圆反演的一些皮毛之见。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;首先我们要明白反演是什么：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;反演是一种基本的几何变换。给定一个平面上的一个反演中心$$ O $$和一个常数$$ k $$，对于任意一个点$$A(A \neq O)$$，我们可以找到一个在直线$$OA$$上的点$$A’$$，使得线段$$OA,OA’$$的有向长度的乘积为$$k$$，那$$A’$$就是$$A$$关于$$O$$的反演点，可以证明这样的$$A’$$是唯一的。我们称$$A-&amp;gt;A’$$的这种变换为反演，我们也可以把它看成一种映射，而且是双射。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>markdown use guide</title>
     <link href="http://www.dofblog.com/2020/11/01/markdown-use-guide/"/>
     <id>http://www.dofblog.com/2020/11/01/markdown-use-guide/</id>
     <published>2020-11-01T01:58:02.000Z</published>
-    <updated>2020-11-01T04:35:30.181Z</updated>
+    <updated>2020-11-01T05:01:14.227Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h1&gt;&lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title=&quot;二级标题&quot;&gt;&lt;/a&gt;二级标题&lt;/h2&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;欢迎使用-Markdown在线编辑器-MdEditor&quot;&gt;&lt;a href=&quot;#欢迎使用-Markdown在线编辑器-MdEditor&quot; class=&quot;headerlink&quot; title=&quot;欢迎使用 Markdown在线编辑器 MdEditor&quot;&gt;&lt;/a&gt;欢迎使用 Markdown在线编辑器 MdEditor&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Markdown是一种轻量级的「标记语言」&lt;/strong&gt;&lt;/p&gt;</summary>
     
     
     
